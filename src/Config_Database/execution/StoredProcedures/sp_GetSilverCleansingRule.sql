@@ -20,8 +20,9 @@ BEGIN
 
     ELSE
     BEGIN
-       select CleansingRules FROM [integration].[SilverLayerEntity]
-              
+        INSERT INTO @OutputTable
+        SELECT [CleansingRules]
+        FROM [integration].[SilverLayerEntity]
         WHERE [SilverLayerEntityId] = @SilverLayerEntityId;
     END
 
