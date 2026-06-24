@@ -211,12 +211,11 @@ print("=" * 50)
 if not nb_exists:
     print(f"Creating       : Running...")
     import requests
-    import sempy.fabric as fabric
     import json
     import base64
     
     access_token =  notebookutils.credentials.getToken('https://analysis.windows.net/powerbi/api')
-    workspace_id = fabric.get_notebook_workspace_id()
+    workspace_id = notebookutils.runtime.context.get('currentWorkspaceId') or notebookutils.runtime.context.get('workspaceId')
     url = f"https://api.fabric.microsoft.com/v1/workspaces/{workspace_id}/notebooks"
 
     headers = {
