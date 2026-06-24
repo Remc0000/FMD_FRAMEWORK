@@ -214,8 +214,9 @@ if not nb_exists:
     import json
     import base64
     
+    import sempy.fabric as fabric
     access_token =  notebookutils.credentials.getToken('https://analysis.windows.net/powerbi/api')
-    workspace_id = notebookutils.runtime.context.get('currentWorkspaceId') or notebookutils.runtime.context.get('workspaceId')
+    workspace_id = fabric.get_notebook_workspace_id()
     url = f"https://api.fabric.microsoft.com/v1/workspaces/{workspace_id}/notebooks"
 
     headers = {
