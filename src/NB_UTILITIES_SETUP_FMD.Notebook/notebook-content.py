@@ -5,7 +5,7 @@
 # META {
 # META   "kernel_info": {
 # META     "name": "jupyter",
-# META     "jupyter_kernel_name": "python3.11"
+# META     "jupyter_kernel_name": "python3.12"
 # META   },
 # META   "dependencies": {}
 # META }
@@ -576,6 +576,7 @@ def deploy_item(workspace_name,name, mapping_table, environment_name, tasks, lak
     print("\n#############################################")
     print(f"Deploying in {workspace_name}: {name}")
 
+    result = None  # ensure defined for all code paths (avoids UnboundLocalError on the tasks/status line)
     tmp_path = copy_to_tmp(name)
 
     workspace_id = get_workspace_id_by_name(workspace_name)
